@@ -1,10 +1,14 @@
-import logo from "./logo.svg";
 import "./App.css";
+import Search from "./Search";
+import Forecast from "./Forecast";
 
 function App() {
   return (
     <div className="App">
-      <h1>helloooooo</h1>
+      <frames>
+        <Search />
+        <Forecast />
+      </frames>
     </div>
   );
 }
