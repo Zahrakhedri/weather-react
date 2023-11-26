@@ -4,6 +4,7 @@ import "./Search.css";
 
 function Search() {
   const [city, setCity] = useState("Shiraz");
+  const [h1, setH1] = useState("Shiraz");
   const [temperature, setTemperature] = useState(14);
   const [description, setDescription] = useState("Cloudy");
   const [humidity, setHumidity] = useState(17);
@@ -13,11 +14,11 @@ function Search() {
   );
 
   function updateCity(event) {
-    event.preventDefault();
     setCity(event.target.value);
   }
 
   function displayTemperature(response) {
+    setH1(response.data.name);
     setTemperature(response.data.main.temp);
     setDescription(response.data.weather[0].description);
     setHumidity(response.data.main.humidity);
@@ -25,6 +26,7 @@ function Search() {
     setIcon(
       ` https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     );
+    console.log(response);
   }
 
   function handleSubmit(event) {
@@ -35,17 +37,19 @@ function Search() {
 
   return (
     <div className="Search">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="input-group p-4 mb-4">
         <input
+          class="form-control col-6"
           type="Search"
           placeholder="Type a city..."
           onChange={updateCity}
         />
-        <input type="submit" value="Search" className="btn btn-primary" />
+        <input type="submit" value="Search" className="btn btn-primary col-2" />
       </form>
+
       <div className="row">
-        <div className="col-6">
-          <h1>{city}</h1>
+        <div className="col">
+          <h1>{h1}</h1>
           <ul>
             <li>finday 3:15</li>
             <li>{description}</li>
@@ -53,9 +57,9 @@ function Search() {
             <li>Wind speed: {wind}km/h</li>
           </ul>
         </div>
-        <div className="col-6">
+        <div className="col">
           <img src={icon} alt={description} />
-          <h2 className="d-inline">{temperature}℃</h2>
+          <h2 className="d-inline">{Math.round(temperature)}℃</h2>
         </div>
       </div>
     </div>

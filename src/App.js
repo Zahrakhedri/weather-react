@@ -5,10 +5,8 @@ import Forecast from "./Forecast";
 function App() {
   return (
     <div className="App">
-      <frames>
-        <Search />
-        <Forecast />
-      </frames>
+      <Search />
+      <Forecast />
     </div>
   );
 }
