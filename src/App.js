@@ -5,8 +5,16 @@ import Forecast from "./Forecast";
 function App() {
   return (
     <div className="App">
-      <Search />
-      <Forecast />
+      <div className="container  mb-0">
+        <Search />
+        <Forecast />
+      </div>
+      <p className="link">
+        <a href="https://github.com/Zahrakhedri/weather-react" target="blank">
+          Open-source
+        </a>
+        code, by Zahra Khedri
+      </p>
     </div>
   );
 }
